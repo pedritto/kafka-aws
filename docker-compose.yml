@@ -1,0 +1,35 @@
+version: '2.2'
+
+services:
+  zookeeper-1:
+    image: zookeeper:latest
+    hostname: zookeeper-1
+    ports:
+    - "12181:2181"
+    expose:
+    - "2181"
+    - "2888"
+    - "3888"
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: zookeeper-1:2888:3888
+
+  kafka-1:
+    build: ./kafka
+    hostname: kafka-1
+    ports:
+    - "19092:9092"
+    expose:
+    - "9092"
+    depends_on:
+    - zookeeper-1
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-1:9092
+      KAFKA_LOG_RETENTION_HOURS: 168
+
+  demo:
+    build: .
+    ports:
+    - 9000:9000
