@@ -13,6 +13,7 @@ services:
     environment:
       ZOO_MY_ID: 1
       ZOO_SERVERS: zookeeper-1:2888:3888
+      KAFKA_HEAP_OPTS: "-Xmx128M -Xms128M"
 
   kafka-1:
     build: ./kafka
@@ -28,6 +29,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper-1:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-1:9092
       KAFKA_LOG_RETENTION_HOURS: 168
+      KAFKA_HEAP_OPTS: "-Xmx256M -Xms256M"
 
   demo:
     build: .
