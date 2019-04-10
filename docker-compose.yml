@@ -16,7 +16,7 @@ services:
       KAFKA_HEAP_OPTS: "-Xmx128M -Xms128M"
 
   kafka-1:
-    build: ./kafka
+    image: wurstmeister/kafka:2.11-2.0.0
     hostname: kafka-1
     ports:
     - "9092:9092"
