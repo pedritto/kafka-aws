@@ -14,3 +14,8 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+kafka:
+  test:
+    topic: testTopic
+    group: test-group

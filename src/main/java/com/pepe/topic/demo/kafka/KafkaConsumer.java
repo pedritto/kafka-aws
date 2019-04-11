@@ -15,7 +15,7 @@ public class KafkaConsumer {
     @Autowired
     private MessageService messageService;
 
-    @KafkaListener(topics = KafkaTopic.TOPIC, groupId = "test-group")
+    @KafkaListener(topics = "${kafka.test.topic}", groupId = "${kafka.test.group}")
     public void consumeMessage(String message) {
         LOGGER.info("Consuming message: {}.", message);
         messageService.addMessage(message);
