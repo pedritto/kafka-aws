@@ -2,6 +2,8 @@ server:
   port: 9000
 
 spring:
+  application:
+    name: my-application
   kafka:
     consumer:
       bootstrap-servers: kafka-1:9093
