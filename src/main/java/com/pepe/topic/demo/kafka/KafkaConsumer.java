@@ -19,12 +19,12 @@ public class KafkaConsumer {
     @Value("${kafka.test.topic}")
     private String kafkaTopicName;
     @Value("${kafka.test.group}")
-    private String kafkaConsumerGroupe;
+    private String kafkaConsumerGroup;
 
     @KafkaListener(topics = "${kafka.test.topic}", groupId = "${kafka.test.group}")
     public void consumeMessage(String message) {
         LOGGER.info("Consuming message: {} from topic: {} by group: {}.",
-                message, kafkaTopicName, kafkaConsumerGroupe);
+                message, kafkaTopicName, kafkaConsumerGroup);
         messageService.addMessage(message);
     }
 }
